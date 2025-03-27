@@ -4,7 +4,12 @@ A pluggable Django app for real-time chat and notifications using MQTT (Eclipse 
 
 🚀 Features
 
-✅ Full MQTT Support (via Paho-MQTT)✅ Asynchronous & Scalable (Fully async-based)✅ Easy Integration (Plug & Play with any Django project)✅ JWT Authentication for MQTT Clients✅ Message Storage in the database✅ Topic-based Subscription & Messaging
+✅ Full MQTT Support (via Paho-MQTT)
+✅ Asynchronous & Scalable (Fully async-based)
+✅ Easy Integration (Plug & Play with any Django project)
+✅ JWT Authentication for MQTT Clients
+✅ Message Storage in the database
+✅ Topic-based Subscription & Messaging
 
 🛠 Installation
 
