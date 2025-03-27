@@ -14,7 +14,7 @@ setup(
     description="A Django plugin for real-time MQTT-based messaging and notifications",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/django-mqtt-service",
+    url="https://github.com/smarakaranjan/RealTimeMQ.git",
     classifiers=[
         "Framework :: Django",
         "Programming Language :: Python :: 3",
