@@ -1,10 +1,10 @@
 README.md
 setup.py
-django_mqtt_service.egg-info/PKG-INFO
-django_mqtt_service.egg-info/SOURCES.txt
-django_mqtt_service.egg-info/dependency_links.txt
-django_mqtt_service.egg-info/requires.txt
-django_mqtt_service.egg-info/top_level.txt
+RealTimeMQ.egg-info/PKG-INFO
+RealTimeMQ.egg-info/SOURCES.txt
+RealTimeMQ.egg-info/dependency_links.txt
+RealTimeMQ.egg-info/requires.txt
+RealTimeMQ.egg-info/top_level.txt
 mqtt_service/__init__.py
 mqtt_service/admin.py
 mqtt_service/apps.py

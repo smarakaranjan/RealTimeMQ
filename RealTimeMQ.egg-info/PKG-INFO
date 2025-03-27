@@ -1,22 +1,24 @@
 Metadata-Version: 2.4
-Name: django-mqtt-service
+Name: RealTimeMQ
 Version: 0.1.0
-Summary: A Django plugin for real-time MQTT-based messaging and notifications
-Home-page: https://github.com/smarakaranjan/RealTimeMQ.git
+Summary: A pluggable Django app for MQTT-based chat and notifications.
+Home-page: https://github.com/smarakaranjan/RealTimeMQ
 Author: Your Name
 Author-email: your_email@example.com
-Classifier: Framework :: Django
+License: MIT
 Classifier: Programming Language :: Python :: 3
+Classifier: Framework :: Django
 Classifier: License :: OSI Approved :: MIT License
 Description-Content-Type: text/markdown
-Requires-Dist: django>=3.2
-Requires-Dist: paho-mqtt>=1.6.1
+Requires-Dist: paho-mqtt
+Requires-Dist: Django>=3.2
 Dynamic: author
 Dynamic: author-email
 Dynamic: classifier
 Dynamic: description
 Dynamic: description-content-type
 Dynamic: home-page
+Dynamic: license
 Dynamic: requires-dist
 Dynamic: summary
 

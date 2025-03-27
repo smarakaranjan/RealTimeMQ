@@ -1,0 +1,2 @@
+paho-mqtt
+Django>=3.2
