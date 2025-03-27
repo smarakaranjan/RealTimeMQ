@@ -13,8 +13,8 @@ setup(
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
     url="https://github.com/smarakaranjan/RealTimeMQ",
-    author="Your Name",
-    author_email="your_email@example.com",
+    author="DataTerrain",
+    author_email="smarakaranjan@dataterrain.com",
     license="MIT",
     classifiers=[
         "Programming Language :: Python :: 3",

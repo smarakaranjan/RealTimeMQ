@@ -31,10 +31,10 @@ class Subscription(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, related_name="subscriptions"
+        settings.AUTH_USER_MODEL, blank=True, null=True, on_delete=models.SET_NULL, related_name="subscriptions"
     )   
     topic = models.ForeignKey(
-        Topic, on_delete=models.SET_NULL, related_name="subscriptions"
+        Topic, blank=True, null=True, on_delete=models.SET_NULL, related_name="subscriptions"
     )   
 
     subscribed_at = models.DateTimeField(auto_now_add=True)
@@ -60,7 +60,7 @@ class Message(models.Model):
         settings.AUTH_USER_MODEL, blank=True, null=True, related_name="received_message", on_delete=models.SET_NULL  
     ) 
     topic = models.ForeignKey(
-        Topic,  blank=False, null=False, related_name="message", on_delete=models.SET_NULL
+        Topic,  blank=True, null=True, related_name="message", on_delete=models.SET_NULL
     )  
 
     created_at = models.DateTimeField(auto_now_add=True) 

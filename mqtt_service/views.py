@@ -5,6 +5,7 @@ from rest_framework.decorators import action
 
 # Django Import's
 from django.shortcuts import get_object_or_404
+from django.contrib.auth import get_user_model
 
 # App Import's
 from mqtt_service.models import (Topic, Message, Subscription)
@@ -98,7 +99,7 @@ class SubscriptionViewSet(viewsets.ModelViewSet):
 
             if serializer.is_valid():
                 serializer.save()
-                return Response({'status': 'Subscribed successfully'}, status=status.HTTP_201_CREATED)
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
             
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
@@ -134,6 +135,43 @@ class SubscriptionViewSet(viewsets.ModelViewSet):
         except Exception as e:
             return Response(
                 {'status': "Error deleting subscription."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
+    
+    @action(detail=False, methods=['post'])
+    def bulk_subscribe(self, request):
+        """
+        🔥 Subscribe multiple users to a given topic.
+
+        Example JSON Request:
+        {
+            "topic_id": 5bba7567-9cc7-4ff5-8fd9-d3142c8c92fa,
+            "user_ids": [2, 3, 4, 5]
+        }
+        """
+        try:
+            topic_id = request.data.get("topic_id")
+            user_ids = request.data.get("user_ids", [])
+
+            # Validate topic existence
+            topic = get_object_or_404(Topic, pk=topic_id)
+
+            # Validate users
+            user_model = get_user_model()
+            users = user_model.objects.filter(id__in=user_ids)
+
+            # Create subscriptions for all users
+            subscriptions = [
+                Subscription(user=user, topic=topic) for user in users
+            ]
+            Subscription.objects.bulk_create(subscriptions)
+
+            return Response(
+                {"status": f"Subscribed {len(users)} users to topic {topic_id}"},
+                status=status.HTTP_201_CREATED,
+            )
+        except Exception as e:
+            return Response(
+                {'status': "Error subscribing multiple users."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
         
     @action(detail=False, methods=['get'])

@@ -9,7 +9,7 @@ from mqtt_service.mqtt_client import MqttService
 import asyncio
 import logging
 import threading
- 
+
 # Initialize Logger
 logger = logging.getLogger(__name__)
 
@@ -34,8 +34,10 @@ class MqttServiceConfig(AppConfig):
             thread.start()
 
     def run_mqtt_service(self):
-        """Runs the MQTT service in a background thread."""
-        asyncio.run(self.start_mqtt_service())
+        """Runs the MQTT service in a dedicated event loop thread."""
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        loop.run_until_complete(self.start_mqtt_service())
 
     async def start_mqtt_service(self):
         """Starts the MQTT service asynchronously."""
